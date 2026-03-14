@@ -21,17 +21,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * HTTP Filter that automatically rate limits ALL incoming requests by IP address.
- *
- * This acts as middleware — every request passes through here.
- * Admin endpoints (/api/admin/**) and internal endpoints are excluded.
- *
- * Rate limit headers are added to every response:
- *   X-RateLimit-Limit:     Maximum requests allowed
- *   X-RateLimit-Remaining: Tokens remaining
- *   X-RateLimit-Reset:     Seconds until reset
- */
+
 @Component
 @Order(1)
 @RequiredArgsConstructor
@@ -102,7 +92,6 @@ public class RateLimitFilter extends OncePerRequestFilter {
     }
 
     private String resolveIdentifier(HttpServletRequest request, String ip) {
-        // Priority: X-API-Key header > X-User-ID header > IP
         String apiKey = request.getHeader("X-API-Key");
         if (apiKey != null && !apiKey.isBlank()) return "apikey:" + apiKey;
 

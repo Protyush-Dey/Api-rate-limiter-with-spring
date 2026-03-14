@@ -17,8 +17,6 @@ public interface RateLimitConfigRepository extends JpaRepository<RateLimitConfig
     List<RateLimitConfig> findByIdentifierType(RateLimitConfig.IdentifierType identifierType);
 
     List<RateLimitConfig> findByActive(boolean active);
-
-    // Find configs with expired tier upgrades
     @Query("SELECT r FROM RateLimitConfig r WHERE r.tierExpiresAt IS NOT NULL AND r.tierExpiresAt < :now")
     List<RateLimitConfig> findExpiredTiers(LocalDateTime now);
 }

@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 
 public class RateLimitDTOs {
 
-    // ── Request: check rate limit ──────────────────────────────────────────
     @Data
     @Builder
     @NoArgsConstructor
@@ -29,7 +28,6 @@ public class RateLimitDTOs {
         private String httpMethod;
     }
 
-    // ── Response: rate limit check result ─────────────────────────────────
     @Data
     @Builder
     @NoArgsConstructor
@@ -43,7 +41,6 @@ public class RateLimitDTOs {
         private String message;
     }
 
-    // ── Request: assign tier ───────────────────────────────────────────────
     @Data
     @Builder
     @NoArgsConstructor
@@ -58,10 +55,9 @@ public class RateLimitDTOs {
         @NotNull(message = "tier is required")
         private SubscriptionTier tier;
 
-        private LocalDateTime expiresAt; // optional; null = permanent
+        private LocalDateTime expiresAt;
     }
 
-    // ── Response: tier info ────────────────────────────────────────────────
     @Data
     @Builder
     @NoArgsConstructor
@@ -75,7 +71,6 @@ public class RateLimitDTOs {
         private LocalDateTime updatedAt;
     }
 
-    // ── Response: status ───────────────────────────────────────────────────
     @Data
     @Builder
     @NoArgsConstructor

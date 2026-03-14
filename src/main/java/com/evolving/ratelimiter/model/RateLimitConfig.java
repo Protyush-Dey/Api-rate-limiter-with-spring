@@ -9,10 +9,6 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-/**
- * Stores per-identifier rate limit configuration.
- * Identifier can be: user_id, IP address, or API key.
- */
 @Entity
 @Table(name = "rate_limit_configs")
 @Data
@@ -26,27 +22,27 @@ public class RateLimitConfig {
     private Long id;
 
     @Column(nullable = false, unique = true)
-    private String identifier;          // user_id, IP, or API key value
+    private String identifier;         
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private IdentifierType identifierType; // USER, IP, API_KEY
+    private IdentifierType identifierType; 
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private SubscriptionTier tier;      // FREE, PRO, ENTERPRISE, UNLIMITED
+    private SubscriptionTier tier;      
 
     @Column(nullable = false)
-    private long capacity;              // Max tokens
+    private long capacity;             
 
     @Column(nullable = false)
-    private double refillRate;          // Tokens per second
+    private double refillRate;          
 
     @Column(nullable = false)
     private boolean active;
 
     @Column
-    private LocalDateTime tierExpiresAt; // For temporary tier upgrades
+    private LocalDateTime tierExpiresAt; 
 
     @Column(nullable = false)
     private LocalDateTime createdAt;

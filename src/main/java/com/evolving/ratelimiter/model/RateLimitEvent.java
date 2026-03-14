@@ -8,9 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-/**
- * Tracks every rate limit check for analytics and auditing.
- */
+
 @Entity
 @Table(name = "rate_limit_events",
        indexes = {
@@ -34,10 +32,10 @@ public class RateLimitEvent {
     private String identifierType;
 
     @Column(nullable = false)
-    private boolean allowed;           // true = allowed, false = rejected (429)
+    private boolean allowed;           
 
     @Column
-    private String endpoint;           // Which API endpoint was called
+    private String endpoint;           
 
     @Column
     private String httpMethod;
